@@ -1,0 +1,10 @@
+{
+"require": {
+    "ext-mysqli": "*",
+ "sendgrid/sendgrid": "~7"
+  }
+
+
+
+
+}
