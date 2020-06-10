@@ -6,7 +6,7 @@ session_start();
 if($_SESSION["LoggedUID"]==0)
 {
 	
-header("Location: index100.php");
+//header("Location: index.php");
 
 }
 
@@ -34,11 +34,15 @@ $query="SELECT * from Userinfo";
 <!DOCTYPE html>
 <html>
 <head>
-	<style >
-		ul {
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Signika:wght@300&family=Suez+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+	<style>
+	
+ul {
 		list-style-type: none;
   	overflow: hidden;
- 	 background-color: #333;
+ 	 background-color: #FF6816;
+ 	 font-family: 'Suez One', serif;
 }
 
 li {
@@ -51,12 +55,16 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  
+
+
+}
+li a:hover {
+  background-color: #e65000;
 }
 		.card{
 			box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 			height:100px;
-			width:200px;
+			width:350px;
 			margin-left: 400px;
 		}
 		.sharecard
@@ -75,20 +83,25 @@ li a {
 			padding-left: 10px;
 		}
 
-
+body
+{
+	font-family: 'Roboto Slab', serif;
+}
 
 	</style>
+	<ul>
+	
+	<li><a href="newopenpage.php">Home</a></li>
+	<li> <a href="allinvitations.php">My Invitations</a></li>
+	<li> <a href="openpage.php">Inbox</a></li>
+	<li><span class="badge"><?php echo $n ;?></span></li>
+	<li> <a href="index.php">logout</a></li>
+
+</ul>
 </head>
 <body>
 
-<ul>
-	
-	<li><a href="openpage.php">HOME</a></li>
-	<li> <a href="createinvitation.php">Create New Invitation</a></li>
-	<li> <a href="allinvitations.php">View all invitations</a></li>
-	<li> <a href="acceptedinvitations.php">Upcoming Events</a></li>
-	<li> <a href="index100.php">logout</a></li>
-</ul>
+
 
 
 
@@ -122,11 +135,12 @@ if($user["ID"]!=$loggerID)
  <a href="shareinvitation.php?ID=<?php echo $user["ID"];?>"> <!-- id of the receiving user is shared  -->
 share
 </a>
-
+<!--
 <form method="POST" action="newone.php">
 	
 	<input type="submit" name="opennew">
 	</form>
+-->
 <?php
 }
 ?> 

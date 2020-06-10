@@ -43,7 +43,7 @@ $cleardb_db       = substr($cleardb_url["path"],1);
     
     echo "User logged in";
     
-    header("Location: openpage.php");
+    header("Location: newopenpage.php");
 
 
   }

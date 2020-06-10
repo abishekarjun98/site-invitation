@@ -5,7 +5,7 @@ session_start();
 if($_SESSION["LoggedUID"]==0)
 {
   
-header("Location: index100.php");
+header("Location: index.php");
 
 }
   $cleardb_url      = parse_url(getenv("CLEARDB_IVORY_URL"));
@@ -42,16 +42,19 @@ $ids=mysqli_fetch_all($result1, MYSQLI_ASSOC);
 <!DOCTYPE html>
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Signika:wght@300&family=Suez+One&display=swap" rel="stylesheet">
 	<style >
 		table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 50%;
 }
-		ul {
-		list-style-type: none;
-  	overflow: hidden;
- 	 background-color: #333;
+		
+ul {
+    list-style-type: none;
+    overflow: hidden;
+   background-color: #FF6816;
+   font-family: 'Suez One', serif;
 }
 
 li {
@@ -64,11 +67,17 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  
+
+
 }
-table, th, td {
+li a:hover {
+  background-color: #e65000;
+}
+
+    table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
+
 }
  .one{
   padding: 15px;
@@ -86,7 +95,7 @@ table, th, td {
   background: yellow;
 }
 th{
-background-color:black;
+background-color: #FF6816;
 color:white;
 height: 50px; 
 }
@@ -115,13 +124,18 @@ padding-top: 10px;
 	</style>
 </head>
 <body>
+
 <ul>
-	
-	<li><a href="openpage.php">HOME</a></li>
-	<li> <a href="createinvitation.php">Create New Invitation</a></li>
-	<li> <a href="allinvitations.php">View all invitations</a></li>
-	<li> <a href="acceptedinvitations.php">Upcoming Events</a></li>
-	<li> <a href="index100.php">logout</a></li>
+  
+  <li><a href="openpage.php">Home</a></li>
+  <li> <a href="allinvitations.php">My Invitations</a></li>
+  <li> <a href="openpage.php">Inbox</a></li>
+  <li><span class="badge"><?php echo $n ;?></span></li>
+  <li> <a href="index.php">logout</a></li>
+
+
+
+
 </ul>
 
 </body>

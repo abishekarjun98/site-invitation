@@ -33,7 +33,7 @@ if ($conn->query($queryi2) === TRUE) {
  
  echo "finr";
 } else {
-  echo "Error: " . $queryi2 . "<br>" . $conn->error;
+ // echo "Error: " . $queryi2 . "<br>" . $conn->error;
 }
 
 }

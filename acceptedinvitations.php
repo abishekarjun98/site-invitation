@@ -5,7 +5,7 @@ session_start();
 if($_SESSION["LoggedUID"]==0)
 {
 	
-header("Location: index100.php");
+header("Location: index.php");
 
 }
 
@@ -36,13 +36,16 @@ $ids=mysqli_fetch_all($result1, MYSQLI_ASSOC);
 
 
 
+
 ?>
 
 
 <!DOCTYPE html>
 <html>
 <head>
-	<style >
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Signika:wght@300&family=Suez+One&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+	<style>
 			.card{
 			box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 			height:150px;
@@ -53,14 +56,15 @@ $ids=mysqli_fetch_all($result1, MYSQLI_ASSOC);
 
 .content
 {
-	padding-left: 30px;
 	
+	font-family: 'Roboto Slab', serif;
 }
 
 ul {
 		list-style-type: none;
   	overflow: hidden;
- 	 background-color: #333;
+ 	 background-color: #FF6816;
+ 	 font-family: 'Suez One', serif;
 }
 
 li {
@@ -73,18 +77,23 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  
+
+
+}
+li a:hover {
+  background-color: #e65000;
 }
 
 
 .viewclick
 {
 
-background-color: #000;
+ background-color: #FF6816;
+ 	 font-family: 'Suez One', serif;
 text-decoration-color: "white";
 height: 30px;
 width: 100px;
-border-radius: 12px;
+border-radius: 6px;
 border-style: solid;
 margin-left: 150px;
 margin-top: 50px;
@@ -104,19 +113,16 @@ a:active {
 	</style>
 </head>
 <body>
+
 <ul>
 	
-	<li><a href="openpage.php">HOME</a></li>
-	<li> <a href="createinvitation.php">Create New Invitation</a></li>
-	<li> <a href="allinvitations.php">View all invitations</a></li>
-	<li> <a href="acceptedinvitations.php">Upcoming Events</a></li>
-	<li> <a href="index100.php">logout</a></li>
+	<li><a href="newopenpage.php">Home</a></li>
+	<li> <a href="allinvitations.php">My Invitations</a></li>
+	<li> <a href="openpage.php">Inbox</a></li>
+	<li><span class="badge"><?php echo $n ;?></span></li>
+	<li> <a href="index.php">logout</a></li>
+
 </ul>
-
-
-
-
-
 
 </body>
 </html>
@@ -172,6 +178,7 @@ foreach ($contents as $content) {	?>
 
 <div class="grpcard">
 <div class="card">
+<div class="content">
 <?php
 echo $content["Title"]."  ".$content["Date"];
 $user_id=$content["UID"];
@@ -185,7 +192,7 @@ $senders=mysqli_fetch_all($result3,MYSQLI_ASSOC);
 foreach ($senders as $sender) {
 
 ?>
-<div class="content">
+<br><br>
 <?php
 
 echo "Sent by  - " .$sender["Name"];

@@ -27,11 +27,14 @@ $cleardb_db       = substr($cleardb_url["path"],1);
 <!DOCTYPE html>
 <html>
 <head>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Signika:wght@300&family=Suez+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
 <style>
 	ul {
 		list-style-type: none;
   	overflow: hidden;
- 	 background-color: #333;
+ 	 background-color: #FF6816;
+ 	 font-family: 'Suez One', serif;
 }
 
 li {
@@ -78,13 +81,13 @@ li a {
 .viewclick
 {
 
-background-color: #000;
+background-color: #FF6816;
 text-decoration-color: "white";
-height: 30px;
-width: 100px;
-border-radius: 12px;
+height: 40px;
+width: 120px;
+border-radius: 6px;
 border-style: solid;
-margin-left: 280px;
+margin-left: 240px;
 }
 a{
 text-decoration: none;
@@ -95,9 +98,10 @@ a:active {
   color: black;
 }
 
-.clearbutton
+
+body
 {
-	background-color: #a3a375;
+	 font-family: 'Roboto Slab', serif;
 }
 
 
@@ -108,12 +112,11 @@ a:active {
 
 <ul>
 	
-	<li><a href="openpage.php">Home</a></li>
-	<li> <a href="createinvitation.php">Create New Invitation</a></li>
-	<li> <a href="allinvitations.php">View Status</a></li>
-	<li> <a href="showdraft.php">Drafts</a></li>
-	<li> <a href="acceptedinvitations.php">Upcoming Events</a></li>
-	<li> <a href="index100.php">logout</a></li>
+	  <li><a href="newopenpage.php">Home</a></li>
+  <li> <a href="allinvitations.php">My Invitations</a></li>
+  <li> <a href="openpage.php">Inbox</a></li>
+  <li><span class="badge"><?php echo $n ;?></span></li>
+  <li> <a href="index.php">logout</a></li>
 </ul>
 
 
@@ -128,18 +131,8 @@ a:active {
 $login_person = $_SESSION["LoggedUID"];	
 
 
-//$conn= mysqli_connect("localhost","chandler","chandler","samabishek");
 
-$query_0="SELECT*  from Userinfo where ID= $login_person ";//used to display the user's Name
 
-$resul=mysqli_query($conn,$query_0);
-
-$username=mysqli_fetch_array($resul,MYSQLI_ASSOC);
-
-echo  nl2br ("<h1> Welcome ".$username["Name"]."\n\n    </h1>  "   )  ;
-?><h2>
-	Received Invitations
-</h2><?php
 
 
 
@@ -164,10 +157,6 @@ if(sizeof($ids)==0)
 
 
 <?php //echo $id["Send_id"] ; 
-
-
-
-
 
 if($id["Acc_Rej"]==-1) //only received invitations which is not responded is displayed. 
 {?>
@@ -256,15 +245,10 @@ Click to View
 <?php } }?>
 
 
-<h2> Accepted Notifications</h2>
 
-
-<button class="clear button" onclick="remove()">
-	Clear ALL
-</button>
-<div class="grpcard">
 
 <?php
+/*
 
 $istatus=1;
 $query_f="SELECT*  from invitation_status where Send_id =$login_person AND Acc_Rej=$istatus ";
@@ -272,6 +256,8 @@ $query_f="SELECT*  from invitation_status where Send_id =$login_person AND Acc_R
 $resul=mysqli_query($conn,$query_f);
 
 $Accepted_list =mysqli_fetch_all($resul,MYSQLI_ASSOC);//accpeted list is created by the invitaions which are accepted
+
+ printf("%s",sizeof($Accepted_list));
 
 foreach ($Accepted_list as $A_id) {
 	
@@ -305,6 +291,7 @@ $reciever=mysqli_fetch_array($result3,MYSQLI_ASSOC);
 <?php
 echo "Accepted by  - " .$reciever["Name"];
 }	
+*/
 ?>
 </div>
 </div>

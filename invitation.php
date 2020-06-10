@@ -4,7 +4,7 @@ session_start();
 if($_SESSION["LoggedUID"]==0)
 {
 	
-header("Location: index100.php");
+header("Location: index.php");
 
 }
 
@@ -49,6 +49,8 @@ if(isset($_POST["Invitationtitle"]) ||isset($_POST["headercontent"]) || isset($_
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Signika:wght@300&family=Suez+One&display=swap" rel="stylesheet">
+		 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
 	<style >
 		.card{
 			box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -94,8 +96,58 @@ font-family: 'Roboto', sans-serif;
 {
 	font-family: 'Architects Daughter', cursive;
 }
+ul {
+		list-style-type: none;
+  	overflow: hidden;
+ 	 background-color: #FF6816;
+ 	 font-family: 'Suez One', serif;
+}
 
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+
+
+}
+li a:hover {
+  background-color: #e65000;
+}
+.vbtn
+{
+border-radius: 6px;
+font-family: 'Roboto Slab', serif;
+background-color: #FF6816;
+ color: white;
+ height:40px;
+ 
+}
+.vbtn:hover
+    {
+     cursor: pointer;   
+
+}
 	</style>
+<ul>
+	
+	<li><a href="newopenpage.php">Home</a></li>
+	<li> <a href="allinvitations.php">My Invitations</a></li>
+	<li> <a href="openpage.php">Inbox</a></li>
+	<li><span class="badge"><?php echo $n ;?></span></li>
+	<li> <a href="index.php">logout</a></li>
+
+
+
+
+</ul>
+
+
 </head>
 <body class="<?php if ($fstyle == "Roboto") echo 'f2';else if($fstyle=="Playfair Display") echo "f3"; else if($fstyle=="Merriweather") echo "f1"; 
 else if($fstyle=="Architects Daughter") echo "f4";
@@ -173,12 +225,6 @@ if ($conn->query($sql) === TRUE) {
 }
 
 
-
-
-
-
-
-
 $last_id = mysqli_insert_id($conn);
 
 
@@ -192,20 +238,20 @@ $u1="https://i.pinimg.com/originals/99/ba/b1/99bab1363d1492816a53d38538b8ac64.jp
 
 <div>
   <a href="allcontacts.php">
-<button>Share this Invitation</button><!--sharing it directly to the users, id is not sent becauese the last id can be obtained directly -->
+<button class="vbtn" style="float: left">Share Directly</button><!--sharing it directly to the users, id is not sent becauese the last id can be obtained directly -->
 </a>
-</div>
-<br><br><br>
-<div>
-	<a href="draft_status.php?ID_i=<?php echo $last_id;?>"><!-- saving it to drafts , sending invitation id -->
-		<button>Save this invitation to Drafts</button>		
-	</a>
 </div>
 
 <div>
-	<h3>Copy the link below to share the invitation</h3>
+	<a href="draft_status.php?ID_i=<?php echo $last_id;?>"><!-- saving it to drafts , sending invitation id -->
+		<button class="vbtn" style="float: left;margin-left: 20px;">Save to Drafts</button>		
+	</a>
+</div>
+
+<div style="margin-left: 20px;" >
+	
 	<a href="https://protected-bayou-24392.herokuapp.com/displayinvitation.php?ID=<?php echo $last_id; ?>">
-	share this link
+	Copy & share this link
 	</a>
 </div>
 
